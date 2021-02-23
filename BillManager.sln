@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillManagerApi", "BillManagerApi\BillManagerApi.csproj", "{8111C146-6EC1-4CA9-BAF9-3ECCF8EF89C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BillManagerTests", "BillManagerTests\BillManagerTests.csproj", "{DA8A9480-068C-4466-8ADE-E24785205374}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8111C146-6EC1-4CA9-BAF9-3ECCF8EF89C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8111C146-6EC1-4CA9-BAF9-3ECCF8EF89C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8111C146-6EC1-4CA9-BAF9-3ECCF8EF89C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8111C146-6EC1-4CA9-BAF9-3ECCF8EF89C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8A9480-068C-4466-8ADE-E24785205374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8A9480-068C-4466-8ADE-E24785205374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8A9480-068C-4466-8ADE-E24785205374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8A9480-068C-4466-8ADE-E24785205374}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF2B647E-AE5A-4EA9-92A6-3B83517F49AA}
+	EndGlobalSection
+EndGlobal
