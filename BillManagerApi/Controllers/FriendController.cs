@@ -77,6 +77,7 @@ namespace BillManagerApi.Controllers
         }
 
         // Add Link: api/Friend/LinkItem/{FriendId}/{BillId}
+        [HttpPost]
         [Route("LinkItem/{searchId}/{linkId}")]
         public async Task<IActionResult> LinkItem(int searchId, int linkId)
         {
@@ -84,6 +85,7 @@ namespace BillManagerApi.Controllers
         }
 
         // Remove Link: api/Friend/UnLinkItem/{FriendId}/{BillId}
+        [HttpPost]
         [Route("UnLinkItem/{searchId}/{linkId}")]
         public async Task<IActionResult> UnLinkItem(int searchId, int linkId)
         {
