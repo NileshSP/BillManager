@@ -8,8 +8,6 @@ Devops - handled using [Azure DevOps](https://dev.azure.com)
 
 [![Build Status](https://dev.azure.com/nspatel/BillManager/_apis/build/status/BillManagerApp%20-%20CI?branchName=master)](https://dev.azure.com/nspatel/BillManager/_build/latest?definitionId=4&branchName=master)
 
-| https://vsrm.dev.azure.com/nspatel/_apis/public/Release/badge/1bc46c9f-0aea-4b09-a247-564218167fb1/1/2 | https://vsrm.dev.azure.com/nspatel/_apis/public/Release/badge/1bc46c9f-0aea-4b09-a247-564218167fb1/1/3
-
 Demo links
 - [PROD](https://billmanagerapp.azurewebsites.net/)
 - [UAT](https://billmanagerapp-uat.azurewebsites.net/)
