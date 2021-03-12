@@ -2,8 +2,13 @@
 
 ## Bill manager ASP.NET 5 web api project
 
-- ASP.NET 5 Web API exposing Bill & Friend entities with relative bill share interactions between them
-- ![Demo]("https://billmanagerapp.azurewebsites.net/")
+ASP.NET 5 Web API exposing Bill & Friend entities with relative bill share interactions between them
+
+Devops - handled using [Azure DevOps]("https://dev.azure.com")
+
+- PROD			: [Demo]("https://billmanagerapp.azurewebsites.net/")
+- UAT/Testing	: [Demo]("https://billmanagerapp-uat.azurewebsites.net/")
+- DEV			: [Demo]("https://billmanagerapp-dev.azurewebsites.net/")
 
 # Steps to get the project running
 
@@ -29,7 +34,7 @@ Steps: using Visual Studio community edition editor
 Steps: using Visual Studio code editor
 >1. Open the root folder of the downloaded repository 
 >2. Await until the project is ready as per the status shown in taskbar which loads required packages in the background
->3. Open Terminal - 'Terminal -> New Terminal' and execute commands as `cd BilManager` & `dotnet build` & `dotnet run` sequentially
+>3. Open Terminal - 'Terminal -> New Terminal' and execute commands as `cd BillManager` & `dotnet build` & `dotnet run` sequentially
 OR
 >4. Hit -> F5 or select 'Debug -> Start Debugging' option to run the project
 

@@ -16,16 +16,20 @@ namespace BillManagerApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment Environment { get; }
+        public Func<IWebHostEnvironment, string> getDBName = (IWebHostEnvironment env) => $"BillManagerApiMainDB-{env.EnvironmentName}";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Get dbcontext instance if exists.... 
             var descriptor = services.SingleOrDefault(
                                         d => d.ServiceType ==
                                             typeof(DbContextOptions<BillManagerDBContext>));
@@ -36,7 +40,7 @@ namespace BillManagerApi
             {
                 services.AddDbContext<BillManagerDBContext>(options =>
                                                 // For In memory
-                                                options.UseInMemoryDatabase("BillManagerApiMainDB")
+                                                options.UseInMemoryDatabase(getDBName(Environment))
                                             );
             }
             services.AddTransient<IDBContext, BillManagerDBContext>();
@@ -53,9 +57,9 @@ namespace BillManagerApi
                 c.SwaggerDoc("v1",
                     new OpenApiInfo
                     {
-                        Title = "Bill Manager API",
+                        Title = $"Bill Manager API({Environment.EnvironmentName})",
                         Version = "v1",
-                        Description = "ASP.NET 5 Web API exposing Bill & Friend entities with relative bill share interactions between them",
+                        Description = $"ASP.NET 5 Web API exposing Bill & Friend entities with relative bill share interactions between them <br/><br/>DB name - {getDBName(Environment)}",
                         Contact = new OpenApiContact
                         {
                             Name = "Nilesh Patel",
@@ -73,15 +77,22 @@ namespace BillManagerApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDBContext dBContext)
+        public void Configure(IApplicationBuilder app, IDBContext dBContext)
         {
             app.UseDeveloperExceptionPage();
 
-            if (!env.EnvironmentName.ToLower().Contains("development"))
+            if (!Environment.EnvironmentName.ToLower().Contains("development"))
             {
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            // Get environment prefix
+            var envTitle = Environment.EnvironmentName.ToLower().Contains("dev")
+                                ? "DEV"
+                                : (Environment.EnvironmentName.ToLower().Contains("prod") 
+                                    ? "PROD" 
+                                    : "UAT");
 
             //app.UseCustomCorsMiddleware();
 
@@ -89,7 +100,7 @@ namespace BillManagerApi
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.DocumentTitle = "Bill Manager";
+                c.DocumentTitle = $"{envTitle} - Bill Manager";
                 c.RoutePrefix = "";
                 c.SwaggerEndpoint("swagger/v1/swagger.json", "Version 1");
             });
