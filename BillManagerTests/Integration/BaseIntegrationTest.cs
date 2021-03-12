@@ -1,5 +1,6 @@
 ﻿using BillManagerApi;
 using BillManagerTests.Integration.HostConfiguration;
+using Microsoft.AspNetCore.Mvc.Testing;
 using NUnit.Framework;
 using System.Net.Http;
 
@@ -14,7 +15,10 @@ namespace BillManagerTests.Integration
         public void SetUp()
         {
             _factory = new CustomWebApplicationFactory<Startup>();
-            _client = _factory.CreateClient();
+            _client = _factory.CreateClient(new WebApplicationFactoryClientOptions
+            {
+                AllowAutoRedirect = false
+            });
         }
 
         [OneTimeTearDown]

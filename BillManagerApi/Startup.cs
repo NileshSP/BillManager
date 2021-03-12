@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Linq;
 
 namespace BillManagerApi
 {
@@ -25,10 +26,19 @@ namespace BillManagerApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BillManagerDBContext>(options =>
-                                            // For In memory
-                                            options.UseInMemoryDatabase("BillManagerApiMainDB")
-                                        );
+            var descriptor = services.SingleOrDefault(
+                                        d => d.ServiceType ==
+                                            typeof(DbContextOptions<BillManagerDBContext>));
+
+            //services.Remove(descriptor);
+
+            if (descriptor == null)
+            {
+                services.AddDbContext<BillManagerDBContext>(options =>
+                                                // For In memory
+                                                options.UseInMemoryDatabase("BillManagerApiMainDB")
+                                            );
+            }
             services.AddTransient<IDBContext, BillManagerDBContext>();
             services.AddTransient<IBillService, BillService>();
             services.AddTransient<IFriendService, FriendService>();
@@ -40,10 +50,10 @@ namespace BillManagerApi
             // For API documentation UI
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", 
-                    new OpenApiInfo 
-                    { 
-                        Title = "Bill Manager API", 
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Bill Manager API",
                         Version = "v1",
                         Description = "ASP.NET 5 Web API exposing Bill & Friend entities with relative bill share interactions between them",
                         Contact = new OpenApiContact
@@ -55,8 +65,9 @@ namespace BillManagerApi
                         License = new OpenApiLicense
                         {
                             Name = "MIT",
+                            Url = new Uri("https://choosealicense.com/licenses/mit/")
                         }
-                    });
+                    }); ;
             });
 
         }
@@ -65,7 +76,6 @@ namespace BillManagerApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDBContext dBContext)
         {
             app.UseDeveloperExceptionPage();
-            dBContext.SeedSampleData().Wait();
 
             if (!env.EnvironmentName.ToLower().Contains("development"))
             {
@@ -84,6 +94,8 @@ namespace BillManagerApi
                 c.SwaggerEndpoint("swagger/v1/swagger.json", "Version 1");
             });
             app.UseMvc();
+
+            dBContext.SeedSampleData().Wait();
         }
     }
 }

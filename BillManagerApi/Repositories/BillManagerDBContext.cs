@@ -49,7 +49,7 @@ namespace BillManagerApi.Repositories
 
                     context
                         .Friend
-                        .AddRange(Enumerable.Range(1, 20)
+                        .AddRange(Enumerable.Range(1, 10)
                             .Select(s => new Friend()
                             {
                                 FirstName = $"test{s}",
@@ -62,7 +62,7 @@ namespace BillManagerApi.Repositories
 
                     context
                         .Bill
-                        .AddRange(Enumerable.Range(1, 10)
+                        .AddRange(Enumerable.Range(1, 5)
                             .Select(s => new Bill()
                             {
                                 ExpenseDescription = $"Expense {s}",
