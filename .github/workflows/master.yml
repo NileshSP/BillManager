@@ -35,11 +35,14 @@ jobs:
       # Run dotnet build and publish
       - name: Restore dependencies
         run: dotnet restore
+
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build 
+
       - name: Test
-        run: dotnet test --no-build --verbosity normal
-      - name: dotnet publish
+        run: dotnet test 
+
+      - name: Publish
         run: dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
           
       # Deploy to Azure Web apps
