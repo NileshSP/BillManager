@@ -8,10 +8,7 @@ Devops - handled using [Azure DevOps](https://dev.azure.com)
 
 [![Build Status](https://dev.azure.com/nspatel/BillManager/_apis/build/status/BillManagerApp%20-%20CI?branchName=master)](https://dev.azure.com/nspatel/BillManager/_build/latest?definitionId=4&branchName=master)
 
-Demo links
-- [PROD](https://billmanagerapp.azurewebsites.net/)
-- [UAT](https://billmanagerapp-uat.azurewebsites.net/)
-- [DEV](https://billmanagerapp-dev.azurewebsites.net/)
+[Try out demo link](https://billmanagerapp.azurewebsites.net/)
 
 # Steps to get the project running
 
