@@ -4,8 +4,6 @@
 
 ASP.NET 5 Web API exposing Bill & Friend entities with relative bill share interactions between them
 
-Devops - handled using [Azure DevOps](https://dev.azure.com)
-
 [![Build Status](https://dev.azure.com/nspatel/BillManager/_apis/build/status/BillManagerApp%20-%20CI?branchName=master)](https://dev.azure.com/nspatel/BillManager/_build/latest?definitionId=4&branchName=master)
 
 [Try out demo link](https://billmanagerapp.azurewebsites.net/)
