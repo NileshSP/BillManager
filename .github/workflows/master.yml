@@ -54,7 +54,30 @@ jobs:
       environment:
         name: PROD-Azure
         url: https://billmanagerapp.azurewebsites.net    
+      
       steps:
+      # Checkout the repo
+      - uses: actions/checkout@master
+      
+      # Setup .NET Core SDK
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }} 
+      
+      # Run dotnet build and publish
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build 
+
+      - name: Test
+        run: dotnet test 
+
+      - name: Publish
+        run: dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
+
       # Deploy to Azure Web apps
       - name: deploy
         uses: azure/webapps-deploy@v2
