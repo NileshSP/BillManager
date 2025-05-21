@@ -93,7 +93,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"BillController Error: PostItem()", item);
+                _logger.LogError(ex, "BillController Error: PostItem() {@item}", item);
                 return Task.FromResult(null as int?);
             }
         }
@@ -135,7 +135,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"BillController Error: PostItems()", items);
+                _logger.LogError(ex, "BillController Error: PostItems() {@items}", items);
                 return Task.FromResult(false);
             }
         }
@@ -160,7 +160,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"BillController Error: PutItem()", item);
+                _logger.LogError(ex, "BillController Error: PutItem() {@item}", item);
                 return Task.FromResult(false);
             }
         }
@@ -185,7 +185,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"BillController Error: PutItems()", items);
+                _logger.LogError(ex, "BillController Error: PutItems() {@items}", items);
                 return Task.FromResult(false);
             }
         }
@@ -271,7 +271,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"BillController Error: LinkItem()", searchId, linkId);
+                _logger.LogError(ex, "BillController Error: LinkItem() searchId: {searchId}, linkId: {linkId}", searchId, linkId);
                 return Task.FromResult(false);
             }
         }
@@ -292,7 +292,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"BillController Error: UnLinkItem()", searchId, linkId);
+                _logger.LogError(ex, "BillController Error: UnLinkItem() searchId: {searchId}, linkId: {linkId}", searchId, linkId);
                 return Task.FromResult(false);
             }
         }

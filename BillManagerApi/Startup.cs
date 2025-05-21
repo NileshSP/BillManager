@@ -48,8 +48,7 @@ namespace BillManagerApi
             services.AddTransient<IFriendService, FriendService>();
             services.AddLogging();
             services.AddMvc(options => options.EnableEndpointRouting = false)
-                .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true)
-                .SetCompatibilityVersion(CompatibilityVersion.Latest);
+                .AddJsonOptions(options => options.JsonSerializerOptions.WriteIndented = true);
 
             // For API documentation UI
             services.AddSwaggerGen(c =>

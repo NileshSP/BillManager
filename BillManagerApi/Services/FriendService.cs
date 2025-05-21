@@ -86,7 +86,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"FriendController Error: PostItem()", item);
+                _logger.LogError(ex, "FriendController Error: PostItem() {@item}", item);
                 return Task.FromResult(null as int?);
             }
         }
@@ -121,7 +121,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"FriendController Error: PostItems()", items);
+                _logger.LogError(ex, "FriendController Error: PostItems() {@items}", items);
                 return Task.FromResult(false);
             }
         }
@@ -146,7 +146,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"FriendController Error: PutItem()", item);
+                _logger.LogError(ex, "FriendController Error: PutItem() {@item}", item);
                 return Task.FromResult(false);
             }
         }
@@ -171,7 +171,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"FriendController Error: PutItems()", items);
+                _logger.LogError(ex, "FriendController Error: PutItems() {@items}", items);
                 return Task.FromResult(false);
             }
         }
@@ -257,7 +257,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"FriendController Error: LinkItem()", searchId, linkId);
+                _logger.LogError(ex, "FriendController Error: LinkItem() searchId: {searchId}, linkId: {linkId}", searchId, linkId);
                 return Task.FromResult(false);
             }
         }
@@ -279,7 +279,7 @@ namespace BillManagerApi.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"FriendController Error: UnLinkItem()", searchId, linkId);
+                _logger.LogError(ex, "FriendController Error: UnLinkItem() searchId: {searchId}, linkId: {linkId}", searchId, linkId);
                 return Task.FromResult(false);
             }
         }
